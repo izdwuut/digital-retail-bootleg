@@ -1,10 +1,6 @@
 from tkinter import *
 from configparser import ConfigParser
 
-# TODO: create config
-cd_key_path = "cd-key.txt"
-bg_image_path = "zyczenia.gif"
-
 
 class Application(Frame):
     config_path = "config.ini"
