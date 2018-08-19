@@ -106,7 +106,6 @@ venv.bak/
 # App-specific
 cd-key.txt
 config.ini
-p.spec
 icon.ico
 bg.gif
 Autorun.inf
