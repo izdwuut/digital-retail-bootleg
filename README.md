@@ -6,7 +6,7 @@ Anyhow, I find it useful if you want to gift your friend with a retail copy of t
 # Usage
 For now configuring the script comes down to adjusting some variables contained in config.ini. If you are going to put the files on a media, there is also Autorun.inf that needs to be tweaked (more on both of them below). I _might_ decide on providing a real-deal installer. Well, maybe not as in _GUI and stuff_, but hopefully a bit more convenient than this. I was shamelessly aiming for an "as easy as it gets" approach.
 
-Please keep in mind that some of the files have `.dist` extension. It has to be removed first so the script run smoothly.
+Please keep in mind that some of the source files have `.dist` extension. It has to be removed first so the script run smoothly.
 
 The `/dist` folder is what you are looking for if your goal is to simply reuse the idea. There are a couple of files in there:
 * `config.ini` - the aforementioned configuration file. See below for more details.
@@ -31,7 +31,7 @@ Everything that has something to do with adjusting how the cd-key is displayed.
 ### [title_bar]
 Settings related to the title bar.
 
-* `title` - the window title. It actually defaults to "Lorem ipsum", but I wanted to be more tech-savvy.
+* `title` - the window title.
 * `icon` - the (fav)icon. It defaults to none, which means that the default tkinter (which I have just fallen in love with!) icon will be used.
 
 # License
