@@ -40,7 +40,39 @@ class Application(Frame):
         text.pack()
         text.insert(END, cd_key)
         text.config(state=DISABLED)
-        parent.pack(expand=1)
+        parent.place(**self.get_position())
+
+    def get_position(self):
+        key = 'cd_key'
+        anchor = self.config[key]['anchor']
+        position = {}
+        if anchor:
+            position = self._get_anchor_position(anchor)
+        else:
+            x = self.config[key]['x']
+            y = self.config[key]['y']
+            if x:
+                position['x'] = int(x)
+            if y:
+                position['y'] = int(y)
+        if not position:
+            position = self._get_default_position()
+        return position
+
+    def _get_anchor_position(self, anchor):
+        positions = {'n': {'anchor': 'n', 'relx': 0.5},
+                     's': {'anchor': 's', 'relx': 0.5, 'rely': 1.0},
+                     'e': {'anchor': 'e', 'relx': 1.0, 'rely': 0.5},
+                     'w': {'anchor': 'w', 'rely': 0.5},
+                     'ne': {'anchor': 'ne', 'relx': 1.0, 'rely': 0.5},
+                     'se': {'anchor': 'se', 'relx': 1.0, 'rely': 1.0},
+                     'sw': {'anchor': 'sw', 'rely': 1.0},
+                     'nw': {'anchor': 'nw'},
+                     'center': {'anchor': 'center', 'relx': 0.5, 'rely': 0.5}}
+        return positions[anchor.lower()]
+
+    def _get_default_position(self):
+        return {}
 
     @classmethod
     def with_bg_image(cls, master=None):

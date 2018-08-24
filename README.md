@@ -20,12 +20,19 @@ I pre-configured the script to yield the gorgeous outcome.
 Ok, so here's where the idea gets rad. There are a couple of options that allows you to adjust how the window is drawn. It's virtually all that there is to do: put some keyboard characters in dedicated places! Additionally, here's a handy manual:
 
 ### [cd_key]
-Everything that has something to do with adjusting how the cd-key is displayed.
+Everything that has something to do with adjusting how the cd-key is displayed. On the visual side, the options are as follows:
 
 * `path` - the path to a text file containing the cd-key.
 * `padding_x` & `padding_y` - text widget padding.
 * `border` - text widget border width.
 * `bg_color` - text widget border color.
+
+I also provide options to position the widget quite freely. It can stick to the window edges and corners in (inter)cardinal directions. It can also be positioned absolutely by providing x and y axes offsets.
+
+* `anchor` - anchors the cd-key widget to the window border in one of these pre-defined directions: `N`, `S`, `E`, `W` and `NE`, `SE`, `SW`, `NW`. You can provide either lowercase or uppercase values, thanks to some intricate Python [wizardry](https://docs.python.org/2/library/stdtypes.html#str.lower). It takes precedence over absolute positioning, hence it's placed higher in the config file. Quite clever, huh?
+* `x` and `y` - position on x and y axis (in pixels), respectively. It's prefectly okay to set only one of them - it would default the other one to 0.
+
+If no direction was provided, the script will go mad and no widget will be displayed. It's a feature. Totally.
 
 ### [bg_image]
 
