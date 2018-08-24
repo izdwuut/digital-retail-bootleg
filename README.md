@@ -44,5 +44,13 @@ Settings related to the title bar.
 * `title` - the window title.
 * `icon` - the (fav)icon. It defaults to none, which means that the default tkinter (which I have just fallen in love with!) icon will be used.
 
+# Build
+
+The executable was build using the awesome [PyInstaller](https://www.pyinstaller.org/) using the following command
+
+`pyinstaller --onefile --hidden-import tkniter --windowed bootleg.py`
+
+Have fun tkintering with it!
+
 # License
 The script is licensed under a permissive [MIT License](https://github.com/izdwuut/digital-retail-bootleg/blob/master/LICENSE).
