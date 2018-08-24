@@ -14,7 +14,9 @@ The `/example` folder is what you are looking for if your goal is to simply reus
 * `cd-key.txt` - an highly ambiguous file containing - lo and behold - the cd-key to be displayed on the screen (or any text for that matter, really. Just please, don't tell anyone that providing an invalid key was my idea). It also serves as a [fall-back](https://thecodinglove.com/adding-my-final-touch-to-a-gross-quickfix) if something goes wrong with the executable.
 * `Autorun.inf` - I believe that it's self-explanatory.
 
-I pre-configured the script to yield the gorgeous outcome.
+I pre-configured the script to yield this gorgeous outcome:
+
+![My image](https://i.imgur.com/sKrGt1z.gif)
 
 # Config
 Ok, so here's where the idea gets rad. There are a couple of options that allows you to adjust how the window is drawn. It's virtually all that there is to do: put some keyboard characters in dedicated places! Additionally, here's a handy manual:
