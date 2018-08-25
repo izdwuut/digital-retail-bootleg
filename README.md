@@ -16,7 +16,7 @@ The `/example` folder is what you are looking for if your goal is to simply reus
 
 I pre-configured the script to yield this gorgeous outcome:
 
-![My image](https://i.imgur.com/sKrGt1z.gif)
+![My image](https://i.imgur.com/MWl42JH.gif)
 
 # Config
 Ok, so here's where the idea gets rad. There are a couple of options that allows you to adjust how the window is drawn. It's virtually all that there is to do: put some keyboard characters in dedicated places! Additionally, here's a handy manual:
