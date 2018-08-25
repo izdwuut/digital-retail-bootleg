@@ -28,6 +28,7 @@ Everything that has something to do with adjusting how the cd-key is displayed. 
 * `padding_x` & `padding_y` - text widget padding.
 * `border` - text widget border width.
 * `bg_color` - text widget border color.
+* `label` - a text widget label text. Not displayed if empty.
 
 I also provide options to position the widget quite freely. It can stick to the window edges and corners in (inter)cardinal directions. It can also be positioned absolutely by providing x and y axes offsets.
 
@@ -50,9 +51,9 @@ Settings related to the title bar.
 
 The executable was build using the awesome [PyInstaller](https://www.pyinstaller.org/) using the following command:
 
-`pyinstaller --onefile --hidden-import tkniter --windowed bootleg.py`
+`pyinstaller --onefile --hidden-import tkinter --windowed bootleg.py`
 
-Have fun tkintering with it!
+Have fun [tkintering](https://docs.python.org/3/library/tk.html) with it!
 
 # License
 The script is licensed under a permissive [MIT License](https://github.com/izdwuut/digital-retail-bootleg/blob/master/LICENSE).
