@@ -4,6 +4,10 @@ padding_x = 5
 padding_y = 5
 border = 1
 bg_color = white
+anchor = center
+x =
+y =
+label = CD-KEY
 
 [bg_image]
 path = bg.gif
