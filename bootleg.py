@@ -1,6 +1,8 @@
 from tkinter import *
 from configparser import ConfigParser
 
+CENTER = 'center'
+
 
 class Application(Frame):
     config_path = "config.ini"
@@ -54,7 +56,7 @@ class Application(Frame):
         bg_color = config['bg_color']
 
         cd_key = self.get_cd_key(path)
-        text = Text(self.master, height=1, width=len(cd_key), bd=border, bg=bg_color, padx=pad_x, pady=pad_y)
+        text = Text(self.master, height=1, width=len(cd_key), bd=border, padx=pad_x, pady=pad_y, bg=bg_color)
         text.insert(END, cd_key)
         text.config(state=DISABLED)
         return text
@@ -68,10 +70,9 @@ class Application(Frame):
     @classmethod
     def with_bg_image(cls, master=None):
         src = cls.config['bg_image']['path']
-
         bg_image = PhotoImage(file=src)
         x = Label(image=bg_image)
-        x.anchor("center")
+        x.anchor(CENTER)
         x.place(x=0, y=0, relwidth=1, relheight=1)
         return cls(master, bg_image)
 
@@ -123,7 +124,7 @@ class Config:
     @staticmethod
     def set_anchor_position(anchor, parent):
         anchor = anchor.lower()
-        if 'n' not in anchor or anchor == 'center':
+        if 'n' not in anchor or anchor == CENTER:
             parent.grid_rowconfigure(0, weight=1)
         if 's' not in anchor:
             parent.grid_rowconfigure(3, weight=1)
