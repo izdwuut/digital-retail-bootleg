@@ -135,13 +135,10 @@ class Config:
 
     @staticmethod
     def set_absolute_position(x, y, parent):
-        position = {}
         if x:
-            # position['padx'] =
-            root.grid_columnconfigure(0, minsize=int(x))
+            parent.grid_columnconfigure(0, minsize=int(x))
         if y:
-            # position['pady'] =
-            root.grid_rowconfigure(0, minsize=int(y))
+            parent.grid_rowconfigure(0, minsize=int(y))
 
 
 if __name__ == "__main__":
