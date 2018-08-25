@@ -45,34 +45,13 @@ class Application(Frame):
     def get_position(self):
         key = 'cd_key'
         anchor = self.config[key]['anchor']
-        position = {}
         if anchor:
-            position = self._get_anchor_position(anchor)
+            position = Config.get_anchor_position(anchor)
         else:
-            x = self.config[key]['x']
-            y = self.config[key]['y']
-            if x:
-                position['x'] = int(x)
-            if y:
-                position['y'] = int(y)
+            position = Config.get_absolute_position(self.config[key]['x'], self.config[key]['y'])
         if not position:
-            position = self._get_default_position()
+            position = Config.get_default_position()
         return position
-
-    def _get_anchor_position(self, anchor):
-        positions = {'n': {'anchor': 'n', 'relx': 0.5},
-                     's': {'anchor': 's', 'relx': 0.5, 'rely': 1.0},
-                     'e': {'anchor': 'e', 'relx': 1.0, 'rely': 0.5},
-                     'w': {'anchor': 'w', 'rely': 0.5},
-                     'ne': {'anchor': 'ne', 'relx': 1.0, 'rely': 0.5},
-                     'se': {'anchor': 'se', 'relx': 1.0, 'rely': 1.0},
-                     'sw': {'anchor': 'sw', 'rely': 1.0},
-                     'nw': {'anchor': 'nw'},
-                     'center': {'anchor': 'center', 'relx': 0.5, 'rely': 0.5}}
-        return positions[anchor.lower()]
-
-    def _get_default_position(self):
-        return {}
 
     @classmethod
     def with_bg_image(cls, master=None):
@@ -126,6 +105,34 @@ class Application(Frame):
 
     def show_icon(self, path):
         self.master.iconbitmap(path)
+
+
+class Config:
+    @staticmethod
+    def get_anchor_position(anchor):
+        positions = {'n': {'anchor': 'n', 'relx': 0.5},
+                     's': {'anchor': 's', 'relx': 0.5, 'rely': 1.0},
+                     'e': {'anchor': 'e', 'relx': 1.0, 'rely': 0.5},
+                     'w': {'anchor': 'w', 'rely': 0.5},
+                     'ne': {'anchor': 'ne', 'relx': 1.0, 'rely': 0.5},
+                     'se': {'anchor': 'se', 'relx': 1.0, 'rely': 1.0},
+                     'sw': {'anchor': 'sw', 'rely': 1.0},
+                     'nw': {'anchor': 'nw'},
+                     'center': {'anchor': 'center', 'relx': 0.5, 'rely': 0.5}}
+        return positions[anchor.lower()]
+
+    @staticmethod
+    def get_default_position():
+        return {}
+
+    @staticmethod
+    def get_absolute_position(x, y):
+        position = {}
+        if x:
+            position['x'] = int(x)
+        if y:
+            position['y'] = int(y)
+        return position
 
 
 if __name__ == "__main__":
