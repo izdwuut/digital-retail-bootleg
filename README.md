@@ -31,10 +31,10 @@ Everything that has something to do with adjusting how the cd-key is displayed. 
 
 I also provide options to position the widget quite freely. It can stick to the window edges and corners in (inter)cardinal directions. It can also be positioned absolutely by providing x and y axes offsets.
 
-* `anchor` - anchors the cd-key widget to the window border in one of these pre-defined directions: `N`, `S`, `E`, `W` and `NE`, `SE`, `SW`, `NW`. You can provide either lowercase or uppercase values, thanks to some intricate Python [wizardry](https://docs.python.org/2/library/stdtypes.html#str.lower). It takes precedence over absolute positioning, hence it's placed higher in the config file. Quite clever, huh?
+* `anchor` - anchors the cd-key widget to the window border in one of these pre-defined directions: `N`, `S`, `E`, `W` and `NE`, `SE`, `SW`, `NW` and `CENTER`. You can provide either lowercase or uppercase values, thanks to some intricate Python [wizardry](https://docs.python.org/2/library/stdtypes.html#str.lower). It takes precedence over absolute positioning, hence it's placed higher in the config file. Quite clever, huh?
 * `x` and `y` - position on x and y axis (in pixels), respectively. It's prefectly okay to set only one of them - it would default the other one to 0.
 
-If no direction was provided, the script will go mad and no widget will be displayed. It's a feature. Totally.
+If none of these was provided, the widget and the corresponding label will be placed in upper left corner, which equals to the `anchor` set to `NW`.
 
 ### [bg_image]
 

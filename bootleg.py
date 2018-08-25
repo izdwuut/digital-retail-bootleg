@@ -27,6 +27,25 @@ class Application(Frame):
         return cd_key
 
     def show_cd_key(self):
+        text = self.get_text_widget()
+        label = self.get_label()
+        self.set_position(text, label)
+
+    def set_position(self, text, label=None):
+        config = self.config['cd_key']
+        anchor = config['anchor']
+        params = {'text': {'widget': text, 'row': 2, 'column': 1, 'stick': W}}
+        if label:
+            params['label'] = {'widget': label, 'row': 1, 'column': 1, 'stick': W}
+        if anchor:
+            Config.set_anchor_position(anchor, self.master)
+        else:
+            Config.set_absolute_position(config['x'], config['y'], self.master)
+        for p in params:
+            widget = params[p].pop('widget')
+            widget.grid(**params[p])
+
+    def get_text_widget(self):
         config = self.config['cd_key']
         path = config['path']
         pad_x = config['padding_x']
@@ -34,24 +53,17 @@ class Application(Frame):
         border = config['border']
         bg_color = config['bg_color']
 
-        parent = Frame(self.master)
         cd_key = self.get_cd_key(path)
-        text = Text(parent, height=1, width=len(cd_key), bd=border, bg=bg_color, padx=pad_x, pady=pad_y)
-        text.pack()
+        text = Text(self.master, height=1, width=len(cd_key), bd=border, bg=bg_color, padx=pad_x, pady=pad_y)
         text.insert(END, cd_key)
         text.config(state=DISABLED)
-        parent.place(**self.get_position())
+        return text
 
-    def get_position(self):
-        key = 'cd_key'
-        anchor = self.config[key]['anchor']
-        if anchor:
-            position = Config.get_anchor_position(anchor)
-        else:
-            position = Config.get_absolute_position(self.config[key]['x'], self.config[key]['y'])
-        if not position:
-            position = Config.get_default_position()
-        return position
+    def get_label(self):
+        label = self.config['cd_key']['label']
+        if label:
+            return Label(self.master, text=label)
+        return None
 
     @classmethod
     def with_bg_image(cls, master=None):
@@ -109,30 +121,26 @@ class Application(Frame):
 
 class Config:
     @staticmethod
-    def get_anchor_position(anchor):
-        positions = {'n': {'anchor': 'n', 'relx': 0.5},
-                     's': {'anchor': 's', 'relx': 0.5, 'rely': 1.0},
-                     'e': {'anchor': 'e', 'relx': 1.0, 'rely': 0.5},
-                     'w': {'anchor': 'w', 'rely': 0.5},
-                     'ne': {'anchor': 'ne', 'relx': 1.0, 'rely': 0.5},
-                     'se': {'anchor': 'se', 'relx': 1.0, 'rely': 1.0},
-                     'sw': {'anchor': 'sw', 'rely': 1.0},
-                     'nw': {'anchor': 'nw'},
-                     'center': {'anchor': 'center', 'relx': 0.5, 'rely': 0.5}}
-        return positions[anchor.lower()]
+    def set_anchor_position(anchor, parent):
+        anchor = anchor.lower()
+        if 'n' not in anchor or anchor == 'center':
+            parent.grid_rowconfigure(0, weight=1)
+        if 's' not in anchor:
+            parent.grid_rowconfigure(3, weight=1)
+        if 'e' not in anchor or anchor == 'center':
+            parent.grid_columnconfigure(2, weight=1)
+        if 'w' not in anchor:
+            parent.grid_columnconfigure(0, weight=1)
 
     @staticmethod
-    def get_default_position():
-        return {}
-
-    @staticmethod
-    def get_absolute_position(x, y):
+    def set_absolute_position(x, y, parent):
         position = {}
         if x:
-            position['x'] = int(x)
+            # position['padx'] =
+            root.grid_columnconfigure(0, minsize=int(x))
         if y:
-            position['y'] = int(y)
-        return position
+            # position['pady'] =
+            root.grid_rowconfigure(0, minsize=int(y))
 
 
 if __name__ == "__main__":
