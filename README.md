@@ -49,7 +49,7 @@ Settings related to the title bar.
 
 # Build
 
-The executable was build using the awesome [PyInstaller](https://www.pyinstaller.org/) using the following command:
+The executable was build with the awesome [PyInstaller](https://www.pyinstaller.org/) using the following command:
 
 `pyinstaller --onefile --hidden-import tkinter --windowed bootleg.py`
 
