@@ -56,4 +56,4 @@ The executable was build with the awesome [PyInstaller](https://www.pyinstaller.
 Have fun [tkintering](https://docs.python.org/3/library/tk.html) with it!
 
 # License
-The script is licensed under a permissive [MIT License](https://github.com/izdwuut/digital-retail-bootleg/blob/master/LICENSE).
+The script is licensed under a permissive [MIT License](https://github.com/izdwuut/digital-retail-bootleg/blob/master/LICENSE). Please no steal.
